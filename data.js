@@ -1,24 +1,5 @@
 const initialProducts = [
   {
-    id: "littledutch-livre-forest",
-    title: "Little Dutch Livre d'activités 'Forest Friends'",
-    brand: "Little Dutch",
-    category: "eveil",
-    categoryLabel: "Éveil & Jouets",
-    categoryIcon: "heart",
-    price: 17.95,
-    oldPrice: null,
-    unitPrice: "17,95 €",
-    rating: 4.9,
-    reviewsCount: 142,
-    store: "Dreambaby.be",
-    storeUrl: "https://www.dreambaby.be/fr/products/little-dutch-livre-dactivites-forest-friends?_pos=7&_sid=6101aad73&_ss=r?variant=50889969271122",
-    image: "images/littledutch-forest-friends.png",
-    description: "Livre d'activités sensoriel et moelleux sur le thème enchanteur des amis de la forêt. Rempli de textures tactiles stimulantes, sons de froissement, anneau de dentition et miroir d'éveil.",
-    isFavorite: false,
-    allowPartial: false
-  },
-  {
     id: "ecohub-sac-voyage",
     title: "ECOHUB Sac de Voyage Femme 30L / Sac d'Hôpital & Maternité (Beige)",
     brand: "ECOHUB",
