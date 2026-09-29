@@ -42,8 +42,6 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
@@ -96,7 +94,7 @@
   <!-- Main Content Area: Products Grid -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
-    <!-- Products Grid (12 items directly visible) -->
+    <!-- Products Grid -->
     <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       <!-- Injected dynamically via app.js -->
     </div>
@@ -113,83 +111,6 @@
       </p>
     </div>
   </footer>
-
-  <!-- ================= MODAL ================= -->
-
-  <!-- Reserve / Gift Modal -->
-  <div id="reserveModal" class="modal-backdrop">
-    <div class="modal-content p-6 sm:p-8 relative">
-      <button class="close-modal absolute top-5 right-5 text-gray-400 hover:text-gray-600 p-1.5 rounded-full hover:bg-gray-100 transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="flex items-start gap-4 mb-6">
-        <div class="w-20 h-20 rounded-2xl bg-[#faf7f2] border border-[#ebdcd0] p-2 flex items-center justify-center shrink-0">
-          <img id="modalProductImg" src="" alt="Produit" class="max-h-full max-w-full object-contain">
-        </div>
-        <div>
-          <span id="modalProductCategory" class="text-xs font-bold text-baby-sage tracking-wider uppercase">Catégorie</span>
-          <h3 id="modalProductTitle" class="text-lg font-bold text-baby-warmDark leading-snug mt-0.5 line-clamp-2">Titre du produit</h3>
-          <div class="flex items-center gap-2 mt-1">
-            <span id="modalProductPrice" class="text-xl font-extrabold text-baby-peachDark">0,00 €</span>
-            <span id="modalProductStore" class="text-xs text-gray-500 font-medium bg-gray-100 px-2 py-0.5 rounded-full">Boutique</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step-by-step guidance banner inside modal -->
-      <div class="bg-baby-peachLight/60 rounded-2xl p-4 border border-baby-peach/20 mb-6">
-        <p class="text-xs font-bold text-baby-peachDark mb-1 flex items-center gap-1.5">
-          <i data-lucide="info" class="w-4 h-4"></i> Comment faire pour offrir ce cadeau ?
-        </p>
-        <ol class="text-xs text-gray-700 space-y-1 list-decimal list-inside">
-          <li>Achetez l'article directement sur le site marchand : 
-            <a id="modalDirectStoreLink" href="#" target="_blank" class="font-bold underline text-baby-peachDark hover:text-baby-peach">
-              Ouvrir la page du produit <i data-lucide="external-link" class="inline w-3 h-3"></i>
-            </a>
-          </li>
-          <li>Remplissez le formulaire ci-dessous pour marquer le cadeau comme réservé et éviter les doublons.</li>
-        </ol>
-      </div>
-
-      <!-- Reservation Form -->
-      <form id="reserveForm" class="space-y-4">
-        <input type="hidden" id="modalProductId" value="">
-
-        <div>
-          <label for="reserveName" class="block text-xs font-bold text-gray-700 mb-1">Votre Nom / Prénom / Surnom <span class="text-rose-500">*</span> :</label>
-          <input type="text" id="reserveName" required placeholder="Ex: Parrain Thomas, Julie & Alex..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-baby-peach">
-        </div>
-
-        <div>
-          <label for="reserveEmail" class="block text-xs font-bold text-gray-700 mb-1">Votre adresse email (optionnelle, pour les parents) :</label>
-          <input type="email" id="reserveEmail" placeholder="votre.email@exemple.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-baby-peach">
-        </div>
-
-        <div>
-          <label for="reserveMessage" class="block text-xs font-bold text-gray-700 mb-1">Un petit mot pour bébé & les parents :</label>
-          <textarea id="reserveMessage" rows="3" placeholder="Félicitations pour cette merveilleuse nouvelle..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-baby-peach resize-none"></textarea>
-        </div>
-
-        <div class="pt-2 flex flex-col sm:flex-row gap-3">
-          <a id="modalBuyBtn" href="#" target="_blank" class="btn-store flex-1 justify-center py-3 text-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            Acheter sur la boutique
-          </a>
-          <button type="submit" class="btn-primary flex-1 py-3 text-sm">
-            <i data-lucide="check-circle" class="w-4 h-4"></i>
-            Marquer comme réservé
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-baby-warmDark text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 text-sm font-medium">
-    <span id="toastIcon" class="text-xl">✨</span>
-    <span id="toastMessage">Action effectuée avec succès !</span>
-  </div>
 
   <!-- Scripts -->
   <script src="data.js"></script>

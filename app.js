@@ -1,40 +1,16 @@
-// Application State & Storage
-const STORAGE_KEYS = {
-  RESERVATIONS: 'baby_registry_reservations_v1'
-};
-
 // Initialize State
 let products = [];
-let reservations = {};
 
 function initData() {
-  const savedReservations = localStorage.getItem(STORAGE_KEYS.RESERVATIONS);
-  reservations = savedReservations ? JSON.parse(savedReservations) : {};
-
-  // Clone initial products and attach reservation states
-  products = initialProducts.map(p => {
-    const res = reservations[p.id];
-    return {
-      ...p,
-      isReserved: !!res,
-      reservedBy: res ? res.name : null,
-      reservedDate: res ? res.date : null,
-      reservedMessage: res ? res.message : null
-    };
-  });
+  products = [...initialProducts];
 }
 
-function saveData() {
-  localStorage.setItem(STORAGE_KEYS.RESERVATIONS, JSON.stringify(reservations));
-}
-
-// Render Products Grid (all 14 items visible directly)
+// Render Products Grid
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
 
   grid.innerHTML = products.map(item => {
-    const isReserved = item.isReserved;
     const hasDiscount = item.oldPrice && item.oldPrice > item.price;
     
     // Star Rating HTML
@@ -52,7 +28,7 @@ function renderProducts() {
     }
 
     return `
-      <div class="product-card ${isReserved ? 'is-reserved' : ''}" data-id="${item.id}">
+      <div class="product-card" data-id="${item.id}">
         
         <!-- Image & Badges Wrap -->
         <div class="product-image-wrap">
@@ -84,14 +60,6 @@ function renderProducts() {
               ${item.store}
             </span>
           </div>
-
-          ${isReserved ? `
-            <div class="absolute inset-0 bg-white/75 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 text-center">
-              <span class="text-3xl mb-1">🎁</span>
-              <span class="text-sm font-extrabold text-baby-warmDark">Cadeau déjà réservé</span>
-              <span class="text-xs text-baby-peachDark font-bold mt-0.5">Offert par ${escapeHtml(item.reservedBy || 'Un proche')}</span>
-            </div>
-          ` : ''}
         </div>
 
         <!-- Card Content Body -->
@@ -137,46 +105,16 @@ function renderProducts() {
               <span class="text-xs font-semibold text-gray-500">${item.unitPrice || ''}</span>
             </div>
 
-            <!-- Buttons -->
-            <div class="flex flex-col gap-2">
-              ${!isReserved ? `
-                <button 
-                  onclick="openReserveModal('${item.id}')" 
-                  class="btn-primary w-full py-2.5 text-sm"
-                >
-                  <i data-lucide="gift" class="w-4 h-4"></i>
-                  Offrir ce cadeau
-                </button>
-                <a 
-                  href="${item.storeUrl}" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="btn-store justify-center py-2 text-xs"
-                >
-                  <span>Voir sur ${item.store}</span>
-                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                </a>
-              ` : `
-                <div class="flex items-center justify-between gap-2">
-                  <a 
-                    href="${item.storeUrl}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="btn-store flex-1 justify-center py-2 text-xs"
-                  >
-                    <span>Voir sur ${item.store}</span>
-                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                  </a>
-                  <button 
-                    onclick="cancelReservation('${item.id}')" 
-                    title="Annuler la réservation" 
-                    class="p-2 text-gray-400 hover:text-rose-500 rounded-full hover:bg-rose-50 transition text-xs flex items-center justify-center border border-gray-200"
-                  >
-                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-                  </button>
-                </div>
-              `}
-            </div>
+            <!-- Single Store Link Button -->
+            <a 
+              href="${item.storeUrl}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-primary w-full py-2.5 text-sm"
+            >
+              <span>Voir sur ${item.store}</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
           </div>
 
         </div>
@@ -188,124 +126,6 @@ function renderProducts() {
   if (window.lucide) {
     lucide.createIcons();
   }
-}
-
-// Open Reserve Modal
-window.openReserveModal = function(productId) {
-  const product = products.find(p => p.id === productId);
-  if (!product) return;
-
-  document.getElementById('modalProductId').value = product.id;
-  document.getElementById('modalProductTitle').textContent = product.title;
-  document.getElementById('modalProductCategory').textContent = product.categoryLabel;
-  document.getElementById('modalProductPrice').textContent = `${product.price.toFixed(2).replace('.', ',')} €`;
-  document.getElementById('modalProductStore').textContent = product.store;
-  document.getElementById('modalProductImg').src = product.image;
-  
-  // Store direct links
-  const buyBtn = document.getElementById('modalBuyBtn');
-  buyBtn.href = product.storeUrl;
-  buyBtn.innerHTML = `<i data-lucide="shopping-bag" class="w-4 h-4"></i> Acheter sur ${product.store}`;
-
-  const directLink = document.getElementById('modalDirectStoreLink');
-  directLink.href = product.storeUrl;
-
-  // Reset form inputs
-  document.getElementById('reserveName').value = '';
-  document.getElementById('reserveEmail').value = '';
-  document.getElementById('reserveMessage').value = '';
-
-  const modal = document.getElementById('reserveModal');
-  modal.classList.add('active');
-
-  if (window.lucide) lucide.createIcons();
-};
-
-// Cancel a reservation
-window.cancelReservation = function(productId) {
-  const product = products.find(p => p.id === productId);
-  if (!product) return;
-
-  if (confirm(`Souhaitez-vous annuler la réservation pour "${product.title}" ?`)) {
-    delete reservations[productId];
-    saveData();
-    initData();
-    renderProducts();
-    showToast('Réservation annulée. L\'article est de nouveau disponible !', '🔄');
-  }
-};
-
-// Handle Reservation Form Submit
-document.getElementById('reserveForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const productId = document.getElementById('modalProductId').value;
-  const name = document.getElementById('reserveName').value.trim();
-  const email = document.getElementById('reserveEmail').value.trim();
-  const message = document.getElementById('reserveMessage').value.trim();
-
-  const product = products.find(p => p.id === productId);
-  if (!product || !name) return;
-
-  const now = new Date();
-  const dateFormatted = now.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
-
-  reservations[productId] = {
-    name,
-    email,
-    message,
-    date: dateFormatted
-  };
-
-  saveData();
-  initData();
-  renderProducts();
-
-  // Close modal
-  document.getElementById('reserveModal').classList.remove('active');
-
-  // Trigger celebration confetti
-  triggerConfetti();
-
-  showToast(`Merci mille fois ${name} pour votre cadeau ! ❤️`, '🎉');
-});
-
-// Close modals
-document.querySelectorAll('.close-modal').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('active'));
-  });
-});
-
-document.querySelectorAll('.modal-backdrop').forEach(modal => {
-  modal.addEventListener('click', function(e) {
-    if (e.target === this) {
-      this.classList.remove('active');
-    }
-  });
-});
-
-// Confetti animation
-function triggerConfetti() {
-  if (typeof confetti === 'function') {
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#f28b82', '#7ba892', '#e8a87c', '#ffd166', '#ff9f1c']
-    });
-  }
-}
-
-// Toast helper
-function showToast(message, icon = '✨') {
-  const toast = document.getElementById('toast');
-  document.getElementById('toastIcon').textContent = icon;
-  document.getElementById('toastMessage').textContent = message;
-
-  toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-  setTimeout(() => {
-    toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-  }, 3500);
 }
 
 // Helper: escape HTML strings
