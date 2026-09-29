@@ -120,23 +120,6 @@ const defaultProducts = (typeof initialProducts !== 'undefined' && Array.isArray
     isFavorite: false
   },
   {
-    id: "mam-sucette-nuit",
-    title: "MAM | Sucette Perfect Nuit 2-6 mois (Lot de 2 pièces)",
-    brand: "MAM",
-    category: "repas",
-    categoryLabel: "Repas & Sucettes",
-    price: 12.50,
-    oldPrice: 13.90,
-    unitPrice: "6,25 € / pièce",
-    rating: 4.6,
-    reviewsCount: 42,
-    store: "Amazon.com.be",
-    storeUrl: "https://www.amazon.com.be/dp/B0CNY4GWG1/?coliid=I1AS9GJFOQBZME&colid=1JQM0H93GL2H&psc=1&ref_=list_c_wl_lv_vv_lig_dp_it",
-    image: "images/mam-sucette-nuit.png",
-    description: "Tétines en silicone ultra-doux phosphorescentes qui brillent dans le noir pour les retrouver facilement la nuit. Conçues pour un développement bucco-dentaire optimal.",
-    isFavorite: false
-  },
-  {
     id: "support-babyphone-clip",
     title: "Support Universel à Clip pour Caméra Bébé & Babyphone (Baaletc)",
     brand: "Baaletc",
