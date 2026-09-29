@@ -95,25 +95,6 @@ const initialProducts = [
     allowPartial: false
   },
   {
-    id: "mam-sucette-naissance",
-    title: "MAM Sucette Perfect Naissance 0-2 mois (Lot de 2 tétines)",
-    brand: "MAM",
-    category: "repas",
-    categoryLabel: "Repas & Sucettes",
-    categoryIcon: "smile",
-    price: 8.97,
-    oldPrice: null,
-    unitPrice: "4,48 € / pièce",
-    rating: 4.8,
-    reviewsCount: 60,
-    store: "Amazon.com.be",
-    storeUrl: "https://www.amazon.com.be/dp/B0CNY3VNQ1/?coliid=I2LLUGLOYLT5Z7&colid=1JQM0H93GL2H&psc=1&ref_=list_c_wl_lv_vv_lig_dp_it",
-    image: "images/mam-sucette-naissance.png",
-    description: "Spécialement adaptées aux tout-petits nouveau-nés de 0 à 2 mois. Bouclier extra-léger et tétine mince pour respecter la mâchoire et les gencives délicates.",
-    isFavorite: false,
-    allowPartial: false
-  },
-  {
     id: "lionelo-poubelle-couches",
     title: "LIONELO Purebin Poubelle à Couches Anti-Odeur 10L avec Sacs Universels",
     brand: "Lionelo",
@@ -149,25 +130,6 @@ const initialProducts = [
     image: "images/molylove-brosse.png",
     description: "Manche en bois noble et soies naturelles de chèvre d'une douceur absolue. Idéal pour coiffer bébé avec délicatesse et prévenir les croûtes de lait sans irriter le cuir chevelu.",
     isFavorite: false,
-    allowPartial: false
-  },
-  {
-    id: "badabulle-balancelle",
-    title: "Badabulle Balancelle Électrique Bébé 'Buddy Cream' (3 Vitesses & 8 Berceuses)",
-    brand: "Badabulle",
-    category: "eveil",
-    categoryLabel: "Éveil & Confort",
-    categoryIcon: "heart",
-    price: 69.99,
-    oldPrice: null,
-    unitPrice: "69,99 €",
-    rating: 4.2,
-    reviewsCount: 96,
-    store: "Amazon.com.be",
-    storeUrl: "https://www.amazon.com.be/Badabulle-Balancelle-Electrique-Balancement-Ber%C3%A7euses/dp/B0CKF6QPD8/ref=mp_s_a_1_29?adgrpid=152291738865&dib=eyJ2IjoiMSJ9.H5Th79fSKFqlx9pOU9X6Uldm15ycCbVtAAwqq7_CJOAxQz2Zpo6JiVjRfYDJ91gCE0aZW4w1V81rIj25pu_XYaoBCsiNx7LHW03mXzKTNrLaJw9TI8jFXHePciHb8xLDEo4Rm0q0vIttkZhY4uqHcFuYhLs_ttDb0XdU23uxNPIciqfWAgFT-TBMOLF2fR_nnH2U1tCZSX85S_JG7rPMVA.XATQJOYuraDrHVb819fXI2oBh34z6bnaYhGusCgH4lM&dib_tag=se&hvadid=820503864201&hvdev=m&hvexpln=0&hvlocphy=9197093&hvnetw=g&hvocijid=12918382347513881671--&hvqmt=e&hvrand=12918382347513881671&hvtargid=kwd-302113294292&hydadcr=28769_2610453&keywords=transat+b%C3%A9b%C3%A9+electrique&mcid=53cf70d91a1f3068bcd7514cabc3cf33&qid=1790348967&sr=8-29&xpid=0CHHGv4DXSeOm#averageCustomerReviewsAnchor",
-    image: "images/badabulle-balancelle.png",
-    description: "Balancelle automatique avec balancement latéral naturel, 3 vitesses réglables, minuterie, 8 douces berceuses et arche de jeux d'éveil suspendus.",
-    isFavorite: true,
     allowPartial: false
   },
   {
