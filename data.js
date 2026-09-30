@@ -38,25 +38,6 @@ const initialProducts = [
     allowPartial: false
   },
   {
-    id: "lionelo-pari-cododo",
-    title: "Lionelo Pari Lit Cododo Bébé 3 en 1 avec Fonction Berceuse & Balancement (Beige)",
-    brand: "Lionelo",
-    category: "chambre",
-    categoryLabel: "Chambre & Sommeil",
-    categoryIcon: "home",
-    price: 84.99,
-    oldPrice: null,
-    unitPrice: "84,99 €",
-    rating: 4.6,
-    reviewsCount: 138,
-    store: "Amazon.com.be",
-    storeUrl: "https://www.amazon.com.be/Lionelo-Cododo-Berceau-Fonction-Berceuse/dp/B0GQ53PZSR/ref=sr_1_5?crid=3E8Y1D9APX1OG&dib=eyJ2IjoiMSJ9.W0y7BI51FBMyopiZP5s_eVg459SukTEVhwoIs-4wLkQ8ZNOkMqXSFf5LvAdir3m9fYX52DsDhY_qrStPQ0qOrQcPI3MOfIjR1QA3sKab-VyqWCwnydozqhhhit21LlsvvajQvriLjUXqCQ1eX_vGcmxgr4kWNTHycQ6Qg-L0ybemicnkfJ638iL445gHWRc2ps6Gpn4NggWDlyed4bkIc0QvIiGvv47mzKXz9ZgukTmjcbPNAtgymS2uE2TH-KeALpEH0z5miF31rFKGNgPbYSMkxarGtfqLNYVbDLjYit8.GaEKlUolm2ZmptT6iHcYNkaunfaALmtG2wTVIydN8nY&dib_tag=se&keywords=cododo%2Bbeige&qid=1790349063&sprefix=cododo%2Bbeig%2Caps%2C120&sr=8-5&th=1",
-    image: "images/lionelo-pari-cododo.png",
-    description: "Berceau cododo réglable en hauteur sur 6 niveaux, inclinable pour soulager le reflux, avec parois en maille respirante, fonction berceuse et roulettes avec frein.",
-    isFavorite: true,
-    allowPartial: false
-  },
-  {
     id: "nuby-anneau-dentition",
     title: "Nuby Teethe-eez Anneau de Dentition Souple en Silicone avec Étui (+3 Mois)",
     brand: "Nuby",
